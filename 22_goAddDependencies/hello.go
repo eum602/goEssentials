@@ -3,7 +3,7 @@ package hello
 import "rsc.io/quote" //extracts many packages from this official dependency
 
 func Hello() string {
-    return quote.Hello()
+	return quote.Hello()
 }
 
 /*
