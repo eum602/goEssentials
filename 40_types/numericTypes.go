@@ -40,4 +40,11 @@ func main(){
 	fmt.Println(u)
 
 
+	bs:=[]byte(s) //using conversion to convert from type string to a slice of bytes(uint8)
+	//basically it convert each letter to the correspondent ascii: http://sticksandstones.kstrom.com/appen.html
+
+	
+	fmt.Println("The conversion from type string to a slice of bytes is",bs)
+	fmt.Println("Type is:") //[]uint8 ;
+	fmt.Printf("%T\n",bs)
 }
