@@ -1,5 +1,6 @@
 package main
 import "fmt"
+import "runtime"
 
 var a int
 var b float32
@@ -20,4 +21,12 @@ func main(){
 	fmt.Println("c variable is",c,"its type is")	
 	fmt.Printf("%T\n",c)
 
+	//ALIASES:
+	/*
+	* byte: uint8
+	* rune: int32
+	*/
+
+	fmt.Println("Using runtime package to get the OS",runtime.GOOS)
+	fmt.Println("Using runtime package to print the running program architecture", runtime.GOARCH)
 }
