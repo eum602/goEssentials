@@ -31,6 +31,8 @@ func main(){
 	fmt.Println("Using runtime package to print the running program architecture", runtime.GOARCH)
 
 	//********************STRINGS*****************************//
+	fmt.Println("**********************************************")
+	fmt.Println("****************STRINGS***********************")
 	s:= "Hello this is nome non useful text"
 	fmt.Println(s)
 	fmt.Printf("%T\n",s)
@@ -47,4 +49,24 @@ func main(){
 	fmt.Println("The conversion from type string to a slice of bytes is",bs)
 	fmt.Println("Type is:") //[]uint8 ;
 	fmt.Printf("%T\n",bs)
+
+	/* **********************************************************
+	
+	*/
+	fmt.Println("****************Ways to print Strings with fmt***********************")
+	message := `Ways to print Strings with fmt package; 
+	%s	the uninterpreted bytes of the string or slice
+	%q	a double-quoted string safely escaped with Go syntax
+	%x	base 16, lower-case, two characters per byte
+	%X	base 16, upper-case, two characters per byte
+	%#U ==> to see the utf character
+	check : https://godoc.org/fmt`
+	fmt.Println(message)
+
+	fmt.Println("\nPrinting utf characters for a text:")
+	for i :=0; i < len(s); i++ {
+		fmt.Printf("%#U ",s[i])
+	}
+
+	
 }
