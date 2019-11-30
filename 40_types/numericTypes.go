@@ -29,4 +29,15 @@ func main(){
 
 	fmt.Println("Using runtime package to get the OS",runtime.GOOS)
 	fmt.Println("Using runtime package to print the running program architecture", runtime.GOARCH)
+
+	//********************STRINGS*****************************//
+	s:= "Hello this is nome non useful text"
+	fmt.Println(s)
+	fmt.Printf("%T\n",s)
+	
+	u:=`This is a text created with backticks`
+
+	fmt.Println(u)
+
+
 }
