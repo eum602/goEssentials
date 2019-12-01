@@ -101,9 +101,9 @@ func main() {
 	/*IOTA is a predeclared identifier*/
 	fmt.Println("************************************IOTA CONSTANT************************************************")
 	const (
-		m = iota
-		n = iota
-		p = iota
+		m = iota + 3 //3
+		n = iota     //1
+		p = iota     //2
 	)
 
 	fmt.Println(m)
