@@ -101,9 +101,15 @@ func main() {
 	/*IOTA is a predeclared identifier*/
 	fmt.Println("************************************IOTA CONSTANT************************************************")
 	const (
-		m = iota + 3 //3
-		n            //4
-		p            //5
+		m = iota //3
+		n        //4
+		p        //5
+	)
+
+	const ( //resets!!! when we start a new set of constants
+		q  = iota //0
+		r         //1
+		ss        //2
 	)
 
 	fmt.Println(m)
@@ -113,4 +119,12 @@ func main() {
 	fmt.Printf("%T\n", m)
 	fmt.Printf("%T\n", n)
 	fmt.Printf("%T\n", p)
+
+	fmt.Println(q)
+	fmt.Println(r)
+	fmt.Println(ss)
+	/*We have only declared variables but numbers are automatically incremented*/
+	fmt.Printf("%T\n", q)
+	fmt.Printf("%T\n", r)
+	fmt.Printf("%T\n", ss)
 }
