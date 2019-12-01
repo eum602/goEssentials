@@ -76,5 +76,10 @@ func main(){
 		//read fmt package from godoc.org/fmt
 	}
 
+	//A string is a slice of bytes and is IMMUTABLE,  meaning that you cannot change
+	//what is the value stored there. BUT I CAN ASSIGN A NEW VALUE
+	s = "This another text, demonstrates that a new value can be REASSIGNED to a string BUT a string cannot be modified"
+	fmt.Println(s)
+
 	//adittional resource to understand strings in : https://blog.golang.org/strings
 }
