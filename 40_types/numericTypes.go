@@ -95,4 +95,22 @@ func main() {
 	fmt.Println(a)
 	fmt.Println(b)
 	fmt.Println(c)
+
+	//***********************constants***********************
+	//https://golang.org/ref/spec#Constants
+	/*IOTA is a predeclared identifier*/
+	fmt.Println("************************************IOTA CONSTANT************************************************")
+	const (
+		m = iota
+		n = iota
+		p = iota
+	)
+
+	fmt.Println(m)
+	fmt.Println(n)
+	fmt.Println(p)
+	/*We have only declared variables but numbers are automatically incremented*/
+	fmt.Printf("%T\n", m)
+	fmt.Printf("%T\n", n)
+	fmt.Printf("%T\n", p)
 }
