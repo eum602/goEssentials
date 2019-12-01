@@ -86,9 +86,12 @@ func main() {
 
 	//***********************constants***********************
 	//https://golang.org/ref/spec
-	const w1 = 42
-	const w2 = 42.78
-	const w3 = "something"
+	const (
+		w1 = 42 //untypes because we are not specifying the type for each cosntant, this gives flexibility;
+		//this is known as a constant of a kind, that gives the compiler a little bit of flexibility
+		w2 = 42.78
+		w3 = "something"
+	)
 	fmt.Println(a)
 	fmt.Println(b)
 	fmt.Println(c)
