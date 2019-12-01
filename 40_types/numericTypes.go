@@ -65,8 +65,16 @@ func main(){
 
 	fmt.Println("\nPrinting utf characters for a text:")
 	for i :=0; i < len(s); i++ {
-		fmt.Printf("%#U ",s[i])
+		fmt.Printf("%#U ",s[i])//each utf code is expresed in int32 (rune)
 	}
 
-	
+	fmt.Println("\n\nShowing the text in their correspondent bytes(uint8) in HEXADECIMAL format:")
+
+	for i, v:=range s{
+		fmt.Printf("At index position %d we have the %#x\n",i,v)//%d ==> base 10; %x prints without leading format (0b
+		//for  binary; 0x for hexadecimal and so on); if we add # (eg %#x) then it will print with the leading format.
+		//read fmt package from godoc.org/fmt
+	}
+
+	//adittional resource to understand strings in : https://blog.golang.org/strings
 }
