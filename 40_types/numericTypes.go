@@ -102,8 +102,8 @@ func main() {
 	fmt.Println("************************************IOTA CONSTANT************************************************")
 	const (
 		m = iota + 3 //3
-		n = iota     //1
-		p = iota     //2
+		n            //4
+		p            //5
 	)
 
 	fmt.Println(m)
