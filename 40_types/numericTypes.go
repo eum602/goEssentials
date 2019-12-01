@@ -87,10 +87,10 @@ func main() {
 	//***********************constants***********************
 	//https://golang.org/ref/spec
 	const (
-		w1 = 42 //untypes because we are not specifying the type for each cosntant, this gives flexibility;
-		//this is known as a constant of a kind, that gives the compiler a little bit of flexibility
-		w2 = 42.78
-		w3 = "something"
+		w1 int     = 42
+		w2 float64 = 42.78
+		w3 string  = "something"
+		//by adding types now those are TYPED constants
 	)
 	fmt.Println(a)
 	fmt.Println(b)
