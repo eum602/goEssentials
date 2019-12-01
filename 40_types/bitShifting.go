@@ -14,9 +14,10 @@ func main() {
 
 	fmt.Println("\nPrinting equilalences between kilobytes, megabytes and gigiabytes")
 	const (
-		kb = 1 << 10 //taking number one and shifting it over 10 so ==> 1 0 000 000 000 (binary) => kb => 2^10
-		mb = 1024 * kb
-		gb = 1024 * mb
+		_  = iota             //throing the first iota away ; //0
+		kb = 1 << (iota * 10) //iota => 1;  taking number one and shifting it over 10 so ==> 1 0 000 000 000 (binary) => kb => 2^10
+		mb = 1 << (iota * 10) //iota => 2
+		gb = 1 << (iota * 10) //iota => 3
 	)
 
 	fmt.Printf("%d\t\t\t%b\n", kb, kb)
