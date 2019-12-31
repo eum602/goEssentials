@@ -40,6 +40,11 @@ func main() {
 	fmt.Println("Also as explained above we can DEREFERENCE the value stored on an address(&b) with '*' operator, then *&b: ", *&b)
 	fmt.Println(*&b)
 
+	*b = 87
+	fmt.Println(`Lets make an assing by knowing the address!! ==> b is an address of type *int. *b references to the value
+	stored on that address; then we can ASSIGN  A NEW VALUE to that ADDRESS!!! => *b = 
+	`, *b, "!!!")
+
 	/*Everything in go is passed by value, and now we are able to share addresses*/
 	/*Of course we could also have made a simple assignment ==> var c := &a   */
 }
