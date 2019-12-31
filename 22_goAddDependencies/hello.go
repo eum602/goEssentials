@@ -20,6 +20,8 @@ func Hello() string {
 11. go install *.go => creates installers for all the go files that exist on the current folder you are located.
 12. go install is also for a package but the executable is located in $GOPATH/pkg
 13. go mod init eum602.com/repo (to create a go module)
+    go mod tidy ==> gets all required depedencies
+    go mod why  ==>  gets all required depedencies and also lists those dependencies
 14. go test (run tests => file somename_test.go must exist with some logic before runnign the test => after running it creates a go.mod file which indicates direct and indirect dependencies)
 15. go list -m all (shows all direct and indirect dependencies required)
 16. go get the_dependency_to_pull (eg go get golang .org/x/get)
