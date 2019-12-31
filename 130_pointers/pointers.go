@@ -26,6 +26,19 @@ func main() {
 	//var b *int = &a or something like this:
 	var b = &a
 	fmt.Println("Assigning type pointer to another variable of the same type=> var *int = &a ======> b = ", b)
+	fmt.Println(`Using https://golang.org/ref/spec#Operators_and_punctuation ==> * (ASTERISC OPERATOR)
+	# When using * with a pointer(where the the variable is located) ==> then it DEREFERENCE, so it indicates what is the value
+		of what is stored on that address:
+	`)
+
+	fmt.Println("I stored an address in 'b' => b = &a.")
+	fmt.Println("The value stored on b is", b)
+	fmt.Println("The type of b is:")
+	fmt.Printf("%T\n", b)
+	fmt.Println("As 'b' is of type pointer(*int) then by using *b golang returns us whatever is stored on that address=> *b: ", *b)
+	fmt.Println("Also b is stored on the address &b", &b)
+	fmt.Println("Also as explained above we can DEREFERENCE the value stored on an address(&b) with '*' operator, then *&b: ", *&b)
+	fmt.Println(*&b)
 
 	/*Everything in go is passed by value, and now we are able to share addresses*/
 	/*Of course we could also have made a simple assignment ==> var c := &a   */
