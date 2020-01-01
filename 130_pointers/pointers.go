@@ -56,13 +56,18 @@ func main() {
 	fmt.Println("Everything in GO is pass by value, what you see is what you get.")
 
 	z := 0
-	foo(z)
-	fmt.Println(z)
+	fmt.Println("z before", &z)
+	fmt.Println("z before", z)
+	foo(&z) //key point is that now we are passing the address
+	fmt.Println("z after", &z)
+	fmt.Println("z after", z) //z has changed!! because now function foo modifies it by using pointers
 
 }
 
-func foo(y int) { //the received value is ASSIGNED to "y"
-	fmt.Println(y)
-	y = 43
-	fmt.Println(y)
+func foo(y *int) { //the received value is ASSIGNED to "y"
+	fmt.Println("y before", y)
+	fmt.Println("y before", *y)
+	*y = 43 //dereferencing to get the value AT the address of y
+	fmt.Println("y after", y)
+	fmt.Println("y after", *y)
 }
