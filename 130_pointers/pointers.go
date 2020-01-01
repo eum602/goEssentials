@@ -47,4 +47,22 @@ func main() {
 
 	/*Everything in go is passed by value, and now we are able to share addresses*/
 	/*Of course we could also have made a simple assignment ==> var c := &a   */
+
+	fmt.Println(`Pointers can be used when:
+		* You want to change the value of of something that is at certain location.
+		* Pass the address where lot of data is stored.
+	`)
+
+	fmt.Println("Everything in GO is pass by value, what you see is what you get.")
+
+	z := 0
+	foo(z)
+	fmt.Println(z)
+
+}
+
+func foo(y int) { //the received value is ASSIGNED to "y"
+	fmt.Println(y)
+	y = 43
+	fmt.Println(y)
 }
