@@ -15,6 +15,10 @@ func main() {
 	fmt.Println(y)
 	sum := sumInts(2, 3, 4, 5, 6, 7) //passing variadic values
 	fmt.Println(sum)
+	fmt.Println("==========================Spread operator==========================")
+	xi := []int{1, 2, 3, 4, 5, 6, 7}
+	sum = sumInts(xi...)
+	fmt.Println("Print sum after spread slice was passed", sum)
 }
 
 func foo() {
