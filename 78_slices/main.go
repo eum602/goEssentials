@@ -9,8 +9,9 @@ func main() {
 	createAnSlice()
 	loopOverSlice()
 	getLenOfSlice()
-	s := []int{3, 5, 6}
+	s := []int{3, 5, 6, 45, 256, 76, 4}
 	getContentAtIndexOfSlice(s, 2)
+	sliceASlice(s, 3, 5)
 }
 
 func sliceDefinition() {
@@ -42,4 +43,13 @@ func getLenOfSlice() {
 
 func getContentAtIndexOfSlice(s []int, i int) {
 	fmt.Println(`Index obtained with s[i] =>`, s[i])
+}
+
+func sliceASlice(s []int, from, upToButNotIncluding int) {
+	fmt.Println("Slicing a Slice", s)
+	fmt.Println("General systanxis: s[from:upToButNotIncluding]")
+	fmt.Println("s[", from, ":", upToButNotIncluding, "]", s[from:upToButNotIncluding])
+	fmt.Println("s[:]  => ", s[:])
+	fmt.Println("s[2:] => ", s[2:])
+	fmt.Println("s[:4] => ", s[:4])
 }
