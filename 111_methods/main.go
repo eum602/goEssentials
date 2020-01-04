@@ -45,18 +45,35 @@ func main() {
 		ltk: true,
 	}
 
-	fmt.Println(sa1)
-	sa1.speak()
-	sa2.speak()
+	p1 := person{
+		first: "Alice",
+		last:  "Spl",
+	}
+
 	fmt.Println(`Because 'human' interface states that "Any type that has the method speack() is of type 'human'"
 	AND speak function has been ATTACHED to be used by 'secretAgent' types
 	THEN all VALUES of types 'secretAgent' are also type 'human'
 	THEN => A value can be of more than one type `)
+
+	bar(sa1)
+	bar(sa2)
+	bar(p1)
+}
+
+func bar(h human) {
+	fmt.Println("\n\nI'm called human, let me speak:")
+	h.speak()
 }
 
 func (s secretAgent) speak() {
 	fmt.Println(`=======I AM INTO SPEAK FUNCTION ===========
 	This function can only be accessed by secretAgent type, in other words this function has been 
 	ATTACHED to secretAgent type, so any value of type secretAgent can access here`)
-	fmt.Println(`I'm `, s.first, s.last)
+	fmt.Println(`I'm `, s.first, s.last, `- I'm of type secretAgent`)
+}
+
+func (p person) speak() {
+	fmt.Println(`=======I AM INTO SPEAK FUNCTION ===========
+	This function speak has been attached to values of type person`)
+	fmt.Println(`I'm `, p.first, p.last, ` - I'm of type person`)
 }
