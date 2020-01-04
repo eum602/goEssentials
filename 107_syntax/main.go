@@ -13,7 +13,7 @@ func main() {
 	x, y := greeting("Erick", "Pacheco")
 	fmt.Println(x)
 	fmt.Println(y)
-
+	sumInts(2, 3, 4, 5, 6, 7) //passing variadic values
 }
 
 func foo() {
@@ -33,4 +33,19 @@ func greeting(fn string, ln string) (string, bool) {
 	a := fmt.Sprint(fn, " ", ln, ` says "hello!"`)
 	b := false
 	return a, b
+}
+
+func sumInts(x ...int) int { //declaring VARIADIC PARAMETERS, in this way it is possible to declare many paramenters
+	//then when received, those parameters will be stored as a SLICE.
+	println("===================SUMS===================")
+	fmt.Println(x)
+	fmt.Printf("%T\n", x)
+	sum := 0
+	for i, v := range x {
+		sum += v
+		fmt.Println("For index ", i, " the value ", v, " is going to be added to sum ==> ", sum)
+	}
+	println("============>RESULTS<==============")
+	fmt.Println("The total sum is", sum)
+	return sum
 }
