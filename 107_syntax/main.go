@@ -13,18 +13,23 @@ func main() {
 	x, y := greeting("Erick", "Pacheco")
 	fmt.Println(x)
 	fmt.Println(y)
-	sum := sumInts(2, 3, 4, 5, 6, 7) //passing variadic values
+	sum := sumInts("some", 2, 3, 4, 5, 6, 7) //passing variadic values
 	fmt.Println(sum)
 	fmt.Println("==========================Spread operator==========================")
 	xi := []int{1, 2, 3, 4, 5, 6, 7}
-	sum = sumInts(xi...)
+	sum = sumInts("some text", xi...)
 	fmt.Println("Print sum after spread slice was passed", sum)
+	sumInts("another some text")
 }
 
 func foo() {
 	fmt.Println(`Generalization of function:
-	func receiver(r receiver) identifier(parameters) (returns(s)){...}
-	Note: Recall that when you define a function we say PARAMETERS(if any), but when you CALL A FUNCTION you pass ARGUMENTS
+	* func receiver(r receiver) identifier(parameters) (returns(s)){...}
+	* Note: Recall that when you define a function we say PARAMETERS(if any), but when you CALL A FUNCTION you pass ARGUMENTS
+	* When passing VARIADIC parameters to a function, you MUST ensure it has to be the last parameter to be defined =>
+		func some(a int, s ...string).
+	* If no variadic argument is passed the slice will still be created BUT as "nil" and the UNDERLYING array would have not been
+	created, so the slice exits but the pointer is pointing to nothing
 	`)
 }
 
@@ -40,12 +45,13 @@ func greeting(fn string, ln string) (string, bool) {
 	return a, b
 }
 
-func sumInts(x ...int) int { //declaring VARIADIC PARAMETERS, in this way it is possible to declare many paramenters
+func sumInts(s string, x ...int) int { //declaring VARIADIC PARAMETERS, in this way it is possible to declare many paramenters
 	//then when received, those parameters will be stored as a SLICE.
 	//variadic functions like this can receive ZERO or more arguments.
 	println("===================SUMS===================")
-	fmt.Println(x)
+	fmt.Println("content of variadic slice is", x, "and the type of that variadic is:")
 	fmt.Printf("%T\n", x)
+	fmt.Println(`The length of variadic slice is len(x) `, len(x))
 	sum := 0
 	for i, v := range x {
 		sum += v
