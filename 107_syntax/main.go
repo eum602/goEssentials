@@ -8,6 +8,8 @@ func main() {
 	foo() //no ARGUMENTS are passed in this example
 	//Everything in GO is PASS BY VALUE
 	bar("Erick") //Passing the ARGUMENT "Erick"
+	s := woo("Erick")
+	fmt.Println(s)
 }
 
 func foo() {
@@ -19,4 +21,7 @@ func foo() {
 
 func bar(s string) {
 	fmt.Println(`This is another function with PARAMETER 's'   :`, s)
+}
+func woo(s string) (returns string) {
+	return fmt.Sprint("Hello from woo ", s) //Sprint => String print => this is gonna print a string
 }
