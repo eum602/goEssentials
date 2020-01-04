@@ -10,6 +10,10 @@ func main() {
 	bar("Erick") //Passing the ARGUMENT "Erick"
 	s := woo("Erick")
 	fmt.Println(s)
+	x, y := greeting("Erick", "Pacheco")
+	fmt.Println(x)
+	fmt.Println(y)
+
 }
 
 func foo() {
@@ -24,4 +28,9 @@ func bar(s string) {
 }
 func woo(s string) (returns string) {
 	return fmt.Sprint("Hello from woo ", s) //Sprint => String print => this is gonna print a string
+}
+func greeting(fn string, ln string) (string, bool) {
+	a := fmt.Sprint(fn, " ", ln, ` says "hello!"`)
+	b := false
+	return a, b
 }
