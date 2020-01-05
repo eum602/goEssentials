@@ -9,6 +9,10 @@ type circle struct {
 	radius float64
 }
 
+type shape interface {
+	area() float64 //all types that implements 'area' method are of type 'shape'
+}
+
 func main() {
 	definitions()
 }
@@ -19,15 +23,24 @@ func definitions() {
 	to a type.
 	* Method sets are a type => https://golang.org/ref/spec#Method_sets
 	* Method set are all the methods associated with some type.	
+	* The method sets determines what interfaces the type implements and the methods that can can be called using a receiver
+	of that type.
 	`)
 
 	c := newCircle(3)
 	printArea(c)
+	info(c)
 }
 
 func (c circle) area() (returns float64) {
 	fmt.Println("area() is a method attached to type 'circle'")
 	return math.Pi * c.radius * c.radius
+}
+
+func info(s shape) {
+	fmt.Println("\n\n============================= INFO =============================")
+	fmt.Println("This method can only be called by all types who implements the method area")
+	fmt.Println("Area of this shape is", s.area())
 }
 
 func newCircle(r float64) (returns circle) {
