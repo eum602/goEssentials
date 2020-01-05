@@ -4,6 +4,8 @@ import (
 	"fmt"
 )
 
+type sometype int
+
 type person struct {
 	first string
 	last  string
@@ -58,9 +60,22 @@ func main() {
 	bar(sa1)
 	bar(sa2)
 	bar(p1)
+
+	var x sometype = 2
+	y := int(x)
+	fmt.Println("Used CONVERSION to convert some type to an int type ", y)
 }
 
 func bar(h human) {
+	switch h.(type) { //using h.(type) to get the type of some value
+	case secretAgent:
+		fmt.Println("Do I have first name??", h.(secretAgent).first) //once I know what type is a value then I can
+		//get some property of that, take into accoutn I am doing that because the parameter of this function is a human type,
+		//but because that input is also of type secretAgent or person then in some case it could be convenient to try
+		//get get some defined property on that other type of that value ==>  h.(secretAgent).first it is called ASSERTION
+	case person:
+		fmt.Println("Do I have first name??", h.(person).first)
+	}
 	fmt.Println("\n\nI'm called human, let me speak:")
 	h.speak()
 }
@@ -77,3 +92,5 @@ func (p person) speak() {
 	This function speak has been attached to values of type person`)
 	fmt.Println(`I'm `, p.first, p.last, ` - I'm of type person`)
 }
+
+//https://www.ardanlabs.com/blog/2015/09/composition-with-go.html
