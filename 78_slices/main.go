@@ -13,6 +13,7 @@ func main() {
 	getContentAtIndexOfSlice(s, 2)
 	sliceASlice(s, 3, 5)
 	appendToSliceExamples(s)
+	deleteFromSliceExample()
 
 }
 
@@ -65,4 +66,15 @@ func appendToSliceExamples(s []int) {
 	s2 := append(s, 1, 4, 5)
 	fmt.Println(`A simple way to append is by using something like this: 
 	s = append(s,1,4,5)= `, s2)
+}
+
+func deleteFromSliceExample() {
+	fmt.Println("\nDeleting some elements from an slice")
+	s := []int{41, 25, 33, 455, 555, 256, 987, 45}
+	fmt.Println(`Given the following slice:
+	* `, s, `
+	* Lets delete the elements 555 and 256, then we can do something like that: s = append(s[:4],s[6:]...) =>`)
+	s = append(s[:4], s[6:]...)
+	fmt.Println(s)
+
 }
