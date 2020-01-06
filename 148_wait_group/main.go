@@ -7,7 +7,10 @@ import (
 
 func main() {
 	getEnv() //gooroutines=1
-	go foo() //the code when added keyword "go" doesn't get printed nothing to the console
+	go foo() //the code when added keyword "go" doesn't get printed nothing to the console because it will
+	//be run on another routine thanks to keyword 'go' , also as this function is into main, then when main finishes
+	//then all into it is forced to finish even when it has not finished, so foo is forced to terminate in case it is
+	//still running ==> so to avoid that behavior a some sort of synchronization is needed.
 	getEnv() //goroutines=2
 
 }
