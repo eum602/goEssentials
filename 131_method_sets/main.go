@@ -25,11 +25,14 @@ func definitions() {
 	* Method set are all the methods associated with some type.	
 	* The method sets determines what interfaces the type implements and the methods that can can be called using a receiver
 	of that type.
+	* The method set of any type 'T' is also the method set of the type of the pointer of 'T' which is '*T', so
+	if we associate methods a(),b() and c() to the type 'T' then the pointer type of 'T', i mean the type of '*T' will also have those methods.
 	`)
 
 	c := newCircle(3)
 	printArea(c)
-	info(c)
+	info(&c) //passing the pointer instead to the circle type will work because the pointer type(the type of c=> *c)
+	//has the same methods that have 'c'
 }
 
 func (c circle) area() (returns float64) {
