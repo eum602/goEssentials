@@ -27,16 +27,18 @@ func definitions() {
 	of that type.
 	* The method set of any type 'T' is also the method set of the type of the pointer of 'T' which is '*T', so
 	if we associate methods a(),b() and c() to the type 'T' then the pointer type of 'T', i mean the type of '*T' will also have those methods.
+	* If a method is assigned to a pointer => func (c *circle) area() (returns float64) {...} ==> then that method is 
+		EXCLUSIVELY assigned to the pointer type '*circle' and not to circle
 	`)
 
 	c := newCircle(3)
 	printArea(c)
 	info(&c) //passing the pointer instead to the circle type will work because the pointer type(the type of c=> *c)
 	//has the same methods that have 'c'
+	//info(c) //it should not work because the receiver of area is explicitly the pointer of c and NOT c
 }
 
-func (c circle) area() (returns float64) {
-	fmt.Println("area() is a method attached to type 'circle'")
+func (c *circle) area() (returns float64) {
 	return math.Pi * c.radius * c.radius
 }
 
