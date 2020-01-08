@@ -16,9 +16,15 @@ func definition() {
 	`)
 
 	c := make(chan int) //channel onto which i can put ints
-	c <- 42             //onto c put number 42; in this line of code the channel BLOCKs, because the send and receive
-	//must happen at the same time. In this case we are entering '42' but there is nothing to pull it off; then blocking occurs.
-	// This is one of the most important concepts.
-	fmt.Println(<-c) //take out of 'c' the content
+
+	go func() { //by using a groutine we are launching off the tasks that are inside this function,
+		//the code blocks in THIS GOROUTINE; the definition (func definition(){...}) goroutine fires up this routine,
+		//and then the flow continues.
+		c <- 42 //onto c put number 42;
+	}()
+
+	fmt.Println(<-c) //take out of 'c' the content ==> the previous  anonymous goroutine waas launched up,
+	//now both the definition goroutine and the anonymous one are RUNNING AT THE SAME TIME. Now we are ready
+	//to pull the value stored on 'c' off the goroutine.
 
 }
