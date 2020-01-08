@@ -9,6 +9,10 @@ func main() {
 	sendChannel()
 	receiveChannel()
 	bidirectionalChannel()
+	specificToGeneral()
+	generalToSpecific()
+	conversionGeneralToSpecificInChannels()
+	conversionSpecificToGeneralInChannels()
 }
 
 func definitions() {
@@ -47,4 +51,46 @@ func bidirectionalChannel() {
 	fmt.Println("Sending value to a channel 'c <- 5' ")
 	fmt.Println("Receiving value from a channel:", <-c)
 	fmt.Printf("The type of the channel is: %T\n", c)
+}
+
+func specificToGeneral() {
+	fmt.Println(`============= SPECIFIC TO GENERAL ASSIGN ===================
+	1. c := make(chan int, 1)
+	2. cr := make(<-chan int, 1)
+	3. c = cr ==> It WONT WORK because specfic to general does not assign
+	`)
+}
+
+func generalToSpecific() {
+	fmt.Println(`============= GENERAL TO SPECIFIC ASSIGN ===================
+	1. c := make(chan int, 1)
+	2. cr := make(<-chan int, 1)
+	3. cs := make(chan<- int,1)
+	4. cr = c ====> Assign General to specific WORKS
+	5. cs = c  ====> Assign General to specific WORKS
+	`)
+}
+
+func conversionGeneralToSpecificInChannels() {
+	c := make(chan int)
+	//cr := make(<-chan int)
+	//cs := make(chan<- int)
+	fmt.Println(` ==== GENERAL TO SPECIFIC CONVERTS ====
+	1. c := make(chan int)
+	2. cr := make(<-chan int)
+	3. cs := make(chan<- int)
+	THEN ==> (<-chan)(c) is possible.
+	THEN ==> (chan<-)(c) is possible
+	`)
+	fmt.Printf("General to specific converts WORKS ==> (<-chan int)(c): \t%T\n", (<-chan int)(c))
+	fmt.Printf("General to specific converts WORKS ==> (chan<- int)(c): \t%T\n", (chan<- int)(c))
+}
+
+func conversionSpecificToGeneralInChannels() {
+	fmt.Println(` ==== SPECIFIC TO GENERAL CONVERTS ====
+	1. cr := make(<-chan int)
+	2. cs := make(chan<- int)
+	THEN ==> (chan int)(cr) is NOT possible.
+	THEN ==> (chan int)(cs) is NOT possible
+	`)
 }
