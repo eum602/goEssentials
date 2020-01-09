@@ -18,10 +18,16 @@ func main() {
 
 //send
 func foo(c chan<- int) { //going from general to specific by converting bidirectional channel to a send channel.
-	c <- 42
+	for i := 0; i < 100; i++ {
+		c <- i
+	}
+	close(c) //closing the channel when all this done, otherwise an error will be thrown because
+	//bar function will be waiting for more values to come.
 }
 
 //receive
 func bar(c <-chan int) { //going from general to specific by converting bidirectional channel to a receive channel.
-	fmt.Println(<-c) //pulling out the value
+	for v := range c { //the range just keeps looping over the channel until the channel gets closed
+		fmt.Println(v) //pulling out the value
+	}
 }
