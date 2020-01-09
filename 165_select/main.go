@@ -40,8 +40,8 @@ func send(e, o, q chan<- int) {
 		}
 	}
 
-	close(e)
-	close(o)
+	//close(e)
+	//close(o)
 	q <- 0
 }
 
