@@ -11,6 +11,7 @@ func main() {
 
 	go send(eve, odd, quit)
 	receive(eve, odd, quit)
+	commaOkExample2()
 
 	fmt.Println("about to exit")
 }
@@ -44,4 +45,20 @@ func receive(eve, odd, quit <-chan int) {
 			fmt.Println("From comma ok: ", i)
 		}
 	}
+}
+
+func commaOkExample2() {
+	fmt.Println("Second example of comma OK")
+	c := make(chan int)
+	go func() {
+		c <- 42
+		close(c) //it can or not be , in both cases this runs without problems
+	}()
+	v, ok := <-c
+	fmt.Println(v, ok) //prints v=42 and ok=true
+	fmt.Println(c, <-c)
+
+	v, ok = <-c
+	fmt.Println(v, ok) //prints v=0 and thus ok=false because there is nothing to pull from here and
+	//the channel is closed
 }
