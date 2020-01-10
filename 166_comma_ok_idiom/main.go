@@ -7,7 +7,7 @@ import (
 func main() {
 	eve := make(chan int)
 	odd := make(chan int)
-	quit := make(chan bool)
+	quit := make(chan int)
 
 	go send(eve, odd, quit)
 	receive(eve, odd, quit)
@@ -15,7 +15,7 @@ func main() {
 	fmt.Println("about to exit")
 }
 
-func send(eve, odd chan<- int, quit chan<- bool) {
+func send(eve, odd, quit chan<- int) {
 	for i := 0; i < 10; i++ {
 		if i%2 == 0 {
 			eve <- i
@@ -26,7 +26,7 @@ func send(eve, odd chan<- int, quit chan<- bool) {
 	close(quit)
 }
 
-func receive(eve, odd <-chan int, quit <-chan bool) {
+func receive(eve, odd, quit <-chan int) {
 	for {
 		select {
 		case v := <-eve:
@@ -40,9 +40,8 @@ func receive(eve, odd <-chan int, quit <-chan bool) {
 				return
 				//if ok is false then all is ok and we exit the infinite for, we will continue
 				//iterating over until getting the right value
-			} else {
-				fmt.Println("From comma ok: ", i)
 			}
+			fmt.Println("From comma ok: ", i)
 		}
 	}
 }
