@@ -10,6 +10,11 @@ type person struct { /*Definign a new TYPE of type struct*/
 	last  string
 }
 
+type secretAgent struct {
+	person //embedding type person into secretAgent type
+	ltk    bool
+}
+
 func main() {
 	fmt.Println("Struct definition:\n", structDefinition, "\n")
 
@@ -24,7 +29,23 @@ func main() {
 		last:  "doe",
 	}
 
+	sa := secretAgent{
+		person: p1,
+		ltk:    true,
+	}
+
+	sa1 := secretAgent{
+		person: person{
+			first: "",
+			last:  "",
+		},
+		ltk: false,
+	}
+
 	fmt.Println(p1.first, p1.last)
 	fmt.Println(p2.first, p2.last)
 
+	fmt.Println("Structs allows to omit the embeded type so we can omit person or not")
+	fmt.Println(sa.first, sa.last, sa.ltk)
+	fmt.Println(sa1.person.first, sa1.person.last, sa1.ltk)
 }
