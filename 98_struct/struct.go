@@ -6,13 +6,15 @@ var structDefinition = `Struct is a data structure which allows us to compose to
 is known as THE COMPOSITE DATA STRUCTURE, also known as the AGGREGATE DATA STRUCTURE(for complex data strucure)`
 
 type person struct { /*Definign a new TYPE of type struct*/
-	first string
-	last  string
+	first string //identifier and type is the way to declare each row in a struct
+	last  string //also 'last' is the unqualified type name =>name of the type ; acts also as the field name
+	//when declaring a new instance of a struct
 }
 
 type secretAgent struct {
-	person //embedding type person into secretAgent type, this is the inner type
-	ltk    bool
+	person //embedding type person into secretAgent type, this is the inner type, this type of declaration is
+	//anonymous field or implicit declaration
+	ltk bool
 }
 
 type secretAgentCollision struct {
@@ -58,7 +60,8 @@ func main() {
 	fmt.Println(p2.first, p2.last)
 
 	fmt.Println("Structs allows to omit the embeded type so we can omit person or not")
-	fmt.Println(sa.first, sa.last, sa.ltk)
+	fmt.Println(sa.first, sa.last, sa.ltk) //by using in this way we say that the inner type(person) gets PROMOTED
+	//to the outer type(secretAgent)
 	fmt.Println(sa1.person.first, sa1.person.last, sa1.ltk)
 
 	fmt.Println("To avoid COLLISIONS we can opt to use the full path to access an attribute")
