@@ -11,8 +11,14 @@ type person struct { /*Definign a new TYPE of type struct*/
 }
 
 type secretAgent struct {
-	person //embedding type person into secretAgent type
+	person //embedding type person into secretAgent type, this is the inner type
 	ltk    bool
+}
+
+type secretAgentCollision struct {
+	person
+	ltk   bool
+	first bool
 }
 
 func main() {
@@ -42,10 +48,19 @@ func main() {
 		ltk: false,
 	}
 
+	sa2 := secretAgentCollision{
+		person: p2,
+		ltk:    false,
+		first:  true,
+	}
+
 	fmt.Println(p1.first, p1.last)
 	fmt.Println(p2.first, p2.last)
 
 	fmt.Println("Structs allows to omit the embeded type so we can omit person or not")
 	fmt.Println(sa.first, sa.last, sa.ltk)
 	fmt.Println(sa1.person.first, sa1.person.last, sa1.ltk)
+
+	fmt.Println("To avoid COLLISIONS we can opt to use the full path to access an attribute")
+	fmt.Println(sa2.person.first, sa2.first)
 }
