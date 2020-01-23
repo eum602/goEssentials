@@ -56,6 +56,17 @@ func main() {
 		first:  true,
 	}
 
+	sa3 := struct { //It is an example of anonymous struct => the definition of the struct and the instantiation
+		//is made together
+		person
+		job string
+		age int
+	}{
+		person: p1,
+		job:    "Teacher",
+		age:    45,
+	}
+
 	fmt.Println(p1.first, p1.last)
 	fmt.Println(p2.first, p2.last)
 
@@ -66,4 +77,5 @@ func main() {
 
 	fmt.Println("To avoid COLLISIONS we can opt to use the full path to access an attribute")
 	fmt.Println(sa2.person.first, sa2.first)
+	fmt.Println("Example of anonymous struct:", sa3.first, sa3.last, sa3.age, sa3.job)
 }
