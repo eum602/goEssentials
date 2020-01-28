@@ -22,7 +22,15 @@ func definitions() {
 	the function as an INDEPENDENT CONCURRENT THREAD OF CONTROL, or goroutine in the same address space.
 	When the goroutine terminates its goroutine also terminates.
 	
-	Function literals are closures`)
+	Function literals are closures
+	
+	The race condition occurs because there are many goroutines accessing a shared variable, so
+	to prevent it we must ensure that no other goroutine can access a shared variable while it is been
+	accessed by other goroutine ==> LOCK access to a certain variable.
+	By using MUTEX we will avoid race conditions.
+	There exist also RMMutex for more flexibility, for example to allow unlimited reads at the same time.
+	`)
+
 }
 
 func example1() {
@@ -33,14 +41,18 @@ func example1() {
 	var wg sync.WaitGroup
 	const gs = 100
 	wg.Add(gs)
+
+	var mu sync.Mutex
 	for i := 0; i < gs; i++ {
 		go func() { //launching a hundred of goroutines to simulate race condition
+			mu.Lock()    //LOCKS for reading and writing
 			v := counter //reading a value
 			//time.Sleep(time.Second) //sleep the goroutine
 			runtime.Gosched() //contributes to race by allowing something else to run, this is the breaking point to
 			//simulate the race condition
 			v++
 			counter = v //writing a value to the shared variable
+			mu.Unlock()
 			wg.Done()
 		}()
 
