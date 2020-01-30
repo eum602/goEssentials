@@ -49,4 +49,11 @@ func example1() {
 	for k, v := range m {
 		println(k, ",", v)
 	}
+	fmt.Println(`
+	Iterating over a slice is identical than iterating over a map, the difference
+	is that slice uses the index whilst maps use the key to iterate over`)
+	xi := []int{1, 2, 3, 4, 5} //a slice, created again with composite literals
+	for i, v := range xi {
+		println(i, ",", v)
+	}
 }
