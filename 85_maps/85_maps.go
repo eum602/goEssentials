@@ -24,10 +24,19 @@ func definitions() {
 func example1() {
 	fmt.Println("Example 1")
 	m := map[string]int{ //key is string and value is int. map[string]int ==> it is the type.
+		//after that comes {"james":32, eum602:31 ... } ==> this is the composite literal because we are
+		//building values together
 		"James":  32,
 		"eum602": 31,
 	}
 	fmt.Println(m)
 	fmt.Println(`m["eum602"] ==>`, m["eum602"])                                           //31
 	fmt.Println(`m["non_existent_key_in_the_map"] ==>`, m["non_existent_key_in_the_map"]) //0
+	v, ok := m["non_existent_key_in_the_map"]
+	fmt.Println(`v,ok := m["non_existent_key_in_the_map"] ==>`, v, ok) //0,false
+	if v, ok := m["non_existent_key_in_the_map"]; ok {
+		fmt.Println("Value exists!") //this wont be printed
+	} else {
+		fmt.Println("\nThe value associated to the key 'non_existent_key_in_the_map' does not exist because v,ok are:", v, ok)
+	}
 }
