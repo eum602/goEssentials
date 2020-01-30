@@ -56,4 +56,14 @@ func example1() {
 	for i, v := range xi {
 		println(i, ",", v)
 	}
+
+	fmt.Println("\n\nDeleting an existent key in a map")
+	delete(m, "eum602")
+	fmt.Println(`delete(m, "eum602")`)
+	fmt.Println(`m["eum602"] ==>`, m["eum602"]) //0
+	if _, ok := m["eum602"]; !ok {
+		fmt.Println("eum602 is not anymore in the map")
+	}
+	fmt.Println("Deleting an non existent key in a map does not throw an error")
+	delete(m, "non_existent_key_in_the_map")
 }
