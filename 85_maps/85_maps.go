@@ -39,4 +39,14 @@ func example1() {
 	} else {
 		fmt.Println("\nThe value associated to the key 'non_existent_key_in_the_map' does not exist because v,ok are:", v, ok)
 	}
+
+	m["yess"] = 24
+	fmt.Printf(`m["yess"] = 24`) //in this way we add a new value to a map.
+	println("\n\nPrinting all key:values of some map", `
+	for k, v := range m {
+		println(k, ",", v)
+	} ==>`)
+	for k, v := range m {
+		println(k, ",", v)
+	}
 }
