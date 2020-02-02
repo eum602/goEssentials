@@ -32,8 +32,20 @@ func contextExample1() {
 
 func contextWithCancelExample() {
 	ctx := context.Background()
-	ctx, _ = context.WithCancel(ctx)
-	printContext(ctx)
+	ctx, cancel := context.WithCancel(ctx)
+	fmt.Println("Context is: \t", ctx)
+	fmt.Println("\nContext Error is", ctx.Err()) //nil
+	fmt.Printf("Context type is \t%T\n", ctx)
+	fmt.Println("Cancel is\t\t", cancel) //0x46d640
+	fmt.Printf("Cancel type is \t%T\n", cancel)
+	fmt.Println("------------------------")
+	fmt.Println("Executing cancel ==> cancel()")
+	cancel()
+	fmt.Println("Context is: \t", ctx)
+	fmt.Println("\nContext Error is", ctx.Err()) //cancelled
+	fmt.Printf("Context type is \t%T\n", ctx)
+	fmt.Println("Cancel is\t\t", cancel) //0x46d640
+	fmt.Printf("Cancel type is \t%T\n", cancel)
 }
 
 func printContext(ctx context.Context) {
