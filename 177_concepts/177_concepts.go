@@ -6,6 +6,7 @@ import (
 
 func main() {
 	definitions()
+	example1()
 }
 
 func definitions() {
@@ -19,4 +20,12 @@ func definitions() {
 		Error() string
 	} ==> so any type that implements an Error() function is also of type error.
 	`)
+}
+
+func example1() {
+	n, err := fmt.Println("Some text")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(n)
 }
