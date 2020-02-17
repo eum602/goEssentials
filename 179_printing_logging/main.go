@@ -12,6 +12,7 @@ func main() {
 }
 
 func example1() {
+	fmt.Println("*************Print logs example*************")
 	f, err := os.Create("log.txt")
 	if err != nil {
 		fmt.Println(err)
@@ -29,7 +30,7 @@ func example1() {
 
 func example2() {
 	defer deferred() //this will not be executed because deferred functions will not be executed.
-	fmt.Println("Log Fatal example: Log fatal invokes os.Exit(1) ==> which means exits with error")
+	fmt.Println("*************Log Fatal example: Log fatal invokes os.Exit(1) ==> which means exits with error*************")
 	f2, err := os.Open("non-existent-file.txt")
 	if err != nil {
 		log.Fatal(err) //exiting with os 1 status code ==> exits with error
