@@ -8,6 +8,7 @@ import (
 
 func main() {
 	example1()
+	example2()
 }
 
 func example1() {
@@ -24,4 +25,18 @@ func example1() {
 		log.Println("An error has happened: ", err) //this log will be written to log.txt
 	}
 	defer f2.Close()
+}
+
+func example2() {
+	defer deferred() //this will not be executed because deferred functions will not be executed.
+	fmt.Println("Log Fatal example: Log fatal invokes os.Exit(1) ==> which means exits with error")
+	f2, err := os.Open("non-existent-file.txt")
+	if err != nil {
+		log.Fatal(err) //exiting with os 1 status code ==> exits with error
+	}
+	defer f2.Close()
+}
+
+func deferred() {
+	fmt.Println("Deferred functions will not be executed when os.Exit(1) is invoked")
 }
