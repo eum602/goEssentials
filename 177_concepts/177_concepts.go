@@ -2,12 +2,18 @@ package main
 
 import (
 	"fmt"
+	"io"
+	"io/ioutil"
+	"os"
+	"strings"
 )
 
 func main() {
 	definitions()
 	example1()
 	inputExample()
+	createFile()
+	readFile()
 }
 
 func definitions() {
@@ -44,4 +50,30 @@ func inputExample() {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func createFile() {
+	f, err := os.Create("myFile.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	defer f.Close() //closing after all
+
+	reader := strings.NewReader("Some text to add")
+	io.Copy(f, reader)
+}
+
+func readFile() {
+	//opening the file
+	r, err := os.Open("myFile.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	text, err := ioutil.ReadAll(r)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("Read text is: ", string(text))
 }
