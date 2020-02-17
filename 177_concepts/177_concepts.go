@@ -7,6 +7,7 @@ import (
 func main() {
 	definitions()
 	example1()
+	inputExample()
 }
 
 func definitions() {
@@ -28,4 +29,19 @@ func example1() {
 		fmt.Println(err)
 	}
 	fmt.Println(n)
+}
+
+func inputExample() {
+	var ans1, ans2 string
+	fmt.Println("Name: ")
+	_, err := fmt.Scan(&ans1)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Last name: ")
+	_, err = fmt.Scan(&ans2)
+	if err != nil {
+		panic(err)
+	}
 }
