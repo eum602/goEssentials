@@ -6,7 +6,9 @@ import (
 )
 
 func main() {
-	customSort()
+	definitions()
+	customSortByAge()
+	customSortByName()
 }
 
 func definitions() {
@@ -24,6 +26,20 @@ type Person struct {
 	Name string
 	Age  int
 }
+
+func (p Person) String() string {
+	return fmt.Sprintf("%s: %d", p.Name, p.Age)
+}
+
+var p1 = Person{
+	Name: "Erick",
+	Age:  32,
+}
+var p2 = Person{
+	Name: "Alice",
+	Age:  45,
+}
+var a = []Person{p1, p2}
 
 //ByAge ...
 type ByAge []Person
@@ -43,19 +59,28 @@ func (b ByAge) Less(i, j int) bool { //ordering criteria: by age
 	return b[i].Age < b[j].Age
 }
 
+//ByName ...
+type ByName []Person
+
+//Len ...
+func (n ByName) Len() int {
+	return len(n)
+}
+
+//Swap ...
+func (n ByName) Swap(i, j int) {
+	n[i], n[j] = n[j], n[i]
+}
+
+//Less
+func (n ByName) Less(i, j int) bool { //ordering criteria: by age
+	return n[i].Name < n[j].Name
+}
+
 //*********************************
 
-func customSort() {
-	p1 := Person{
-		Name: "Erick",
-		Age:  32,
-	}
-	p2 := Person{
-		Name: "Alice",
-		Age:  45,
-	}
-	a := []Person{p1, p2}
-	fmt.Println("Intial array of persons is\n", a)
+func customSortByAge() {
+	fmt.Println("\nIntial array of persons is\n", a)
 	b := ByAge(a)
 	fmt.Println(b.Len())
 	fmt.Println(b.Less(0, 1))
@@ -67,6 +92,11 @@ func customSort() {
 	fmt.Println(b)
 }
 
-func (p Person) String() string {
-	return fmt.Sprintf("%s: %d", p.Name, p.Age)
+func customSortByName() {
+	fmt.Println("\nOrdering by Name... initial array: ")
+	n := ByName(a)
+	fmt.Println(n)
+	sort.Sort(n)
+	fmt.Println("Ordering by Name, finally ordered: ")
+	fmt.Println(n)
 }
