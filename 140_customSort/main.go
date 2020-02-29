@@ -2,10 +2,21 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 func main() {
 	customSort()
+}
+
+func definitions() {
+	fmt.Println(`
+	All types that implements the "Interface" interface are also of type "Interface" and thus can call "Sort" method of package "sort" ==>
+	https://golang.org/pkg/sort/#Sort
+	
+	To be of type "Interface", types must implement Len(), Less() and Swap() methods ==>
+	https://golang.org/pkg/sort/#Interface
+	 `)
 }
 
 // Person  ...
@@ -28,7 +39,7 @@ func (b ByAge) Swap(i, j int) {
 }
 
 //Less
-func (b ByAge) Less(i, j int) bool {
+func (b ByAge) Less(i, j int) bool { //ordering criteria: by age
 	return b[i].Age < b[j].Age
 }
 
@@ -51,6 +62,9 @@ func customSort() {
 	b.Swap(0, 1)
 	fmt.Println(b)
 
+	fmt.Println("Ordering By using sort with the implementation of 'Interface' with the ordering criteria by Age")
+	sort.Sort(b)
+	fmt.Println(b)
 }
 
 func (p Person) String() string {
