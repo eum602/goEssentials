@@ -11,6 +11,8 @@ func main() {
 	example1()
 
 	example2()
+
+	example3()
 }
 
 func definitions() {
@@ -31,6 +33,16 @@ func example2() {
 	s1 := func() int {
 		return 345
 	}()
+
+	fmt.Println(s1)
+	fmt.Printf("%T", s1)
+}
+
+func example3() {
+	fmt.Println("Retuning a function that returns a type 'func() int'")
+	s1 := func() int {
+		return 345
+	}
 
 	fmt.Println(s1)
 	fmt.Printf("%T", s1)
