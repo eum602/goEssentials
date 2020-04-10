@@ -11,6 +11,9 @@ func main() {
 
 	example1()
 	example3()
+	example4()
+	example5()
+	fmt.Println(example6())
 	example2()
 }
 
@@ -40,6 +43,7 @@ func example1() {
 }
 
 func example2() {
+	fmt.Println("Example 2: log.Fatal == os.Exit(1) and in that case deferreds are not executed!!")
 	defer deferred() //this will not be executed because deferred functions will not be executed.
 	fmt.Println("*************Log Fatal example: Log fatal invokes os.Exit(1) ==> which means exits with error*************")
 	f2, err := os.Open("non-existent-file.txt")
@@ -50,6 +54,7 @@ func example2() {
 }
 
 func example3() {
+	fmt.Println("Example 3: Using defer to copy from one file to another")
 	f, err := os.Create("log1.txt")
 	if err != nil {
 		fmt.Println(err)
@@ -62,6 +67,30 @@ func example3() {
 		log.Println("Error in example 3", err)
 	}
 	log.Println("Successfull copy", written)
+}
+
+func example4() {
+	fmt.Println("Example 4: printing a last message after return with defer")
+	i := 0
+	defer fmt.Println(i) //it will print "0" after return returns 1.
+	i++
+	return
+}
+
+func example5() {
+	fmt.Println("Example 5: printing in reverse order with defer")
+	for i := 0; i < 4; i++ {
+		//Deferred function calls are executed in Last In First Out order after the surrounding function returns.
+		defer fmt.Print(i, "\n") //3210
+	}
+}
+
+func example6() (i int) {
+	//In this example, a deferred function increments the return value i after the surrounding
+	//function returns. Thus, this function returns 2:
+	fmt.Println("Example 6: changing the returned message with defer!!")
+	defer func() { i++ }()
+	return 1
 }
 
 func deferred() {
