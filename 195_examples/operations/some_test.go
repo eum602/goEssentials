@@ -1,10 +1,16 @@
 package operations
 
 import (
+	"fmt"
 	"testing"
 )
 
 //TestSum tests sum function
+func ExampleSum() {
+	fmt.Println(Sum(2, 3))
+	//output:
+	//5
+}
 func TestSum(t *testing.T) {
 	type test struct {
 		data   []int

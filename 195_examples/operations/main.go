@@ -1,3 +1,4 @@
+//Package operations gives many basic arithmetic operations
 package operations
 
 import (
