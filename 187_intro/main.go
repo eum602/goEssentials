@@ -20,6 +20,13 @@ func definitions() {
 		* go doc json.Number.Float64
 		* cd go/src/encoding/json; go doc decode <> go doc json.decode
 
+		Install godoc with ==> sudo apt install golang-golang-x-tools
+		godoc extracts and generates documentation for go programs.
+		run it with godoc -http=:8080 or http :8080
+		godoc fmt ==> similar to go doc fmt
+		godoc fmt Printf ==> similar to go doc fmt.Printf
+		godoc -src fmt Printf ==> shows also comments about the queried method (implementation details)
+
 	godoc.org: Has third party package documentation.
 
 	https://golang.org/pkg/ ==> standard libraries
