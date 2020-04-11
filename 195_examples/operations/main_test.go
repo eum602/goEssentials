@@ -5,11 +5,17 @@ import (
 	"testing"
 )
 
-//TestSum tests sum function
+//TestSum tests sum function. All examples that are shown for godoc must start with Example*
 func ExampleSum() {
 	fmt.Println(Sum(2, 3))
 	//output:
 	//5
+}
+//ExampleSum_1 is another example of Sum method; thus it must have ExampleSum_*. Eg. ExampleSum_first , ExampleSum_1
+func ExampleSum_first() {
+	fmt.Println(Sum(4, 3))
+	//output:
+	//7
 }
 func TestSum(t *testing.T) {
 	type test struct {

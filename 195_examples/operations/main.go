@@ -1,4 +1,5 @@
-//Package operations gives many basic arithmetic operations
+//Package operations gives many basic arithmetic operations.
+//Find more testable examples here: https://blog.golang.org/examples
 package operations
 
 import (
@@ -20,7 +21,7 @@ func definitions() {
 
 }
 
-//Sum ...
+//Sum : A custom sum function. Only for learning purpose in order to show how to wirte documentation
 func Sum(x ...int) int {
 	sum := 0
 	for _, v := range x {
