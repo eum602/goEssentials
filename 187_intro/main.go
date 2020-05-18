@@ -13,8 +13,9 @@ func definitions() {
 	go doc: part of the go command
 	godoc: a command just like 'go' is a command. Allows us to read documentation at the terminal.
 		* go help doc
-		* go doc myMath 
-		* go doc myMath.Sum
+		* go doc mymath 
+		* go doc mymath.Sum
+		* go doc github.com/eum602/goEssentials/190_myMath ==> so see specific package
 		* go doc fmt
 		* go doc json.Number
 		* go doc json.Number.Float64
