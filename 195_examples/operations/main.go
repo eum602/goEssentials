@@ -17,6 +17,9 @@ func definitions() {
 	It is reccomended that test files be located in the same location where package files are
 	All tests names must have Test* format name!!
 	To run test use : 'go test' or 'go test -v'
+	To get information about this package on terminal use: go doc github.com/eum602/goEssentials/195_examples/operations
+	To check for details and observations use golint ./...
+	Other similar to golint is go vet ./...
 	`)
 
 }
