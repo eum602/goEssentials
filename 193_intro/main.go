@@ -15,6 +15,8 @@ func definitions() {
 	It is reccomended that test files be located in the same location where package files are
 	All tests names must have Test* format name!!
 	To run test use : 'go test' or 'go test -v'
+	To get help run: 'go test --help'
+	To run all test inside a folder: go test ./... -v
 	`)
 
 }
